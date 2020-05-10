@@ -9,6 +9,8 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 const usersRouter = require('./routes/users')
+const habitsRouter = require('./routes/habits')
+const recordsRouter = require('./routes/records')
 
 const app = express()
 
@@ -21,6 +23,9 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/users', usersRouter)
+app.use('/habits', habitsRouter)
+app.use('/records', recordsRouter)
+
 
 
 //  Not favicon because Backend
@@ -43,6 +48,5 @@ app.use((err, req, res, next) => {
     error: err
   })
 })
-
 
 module.exports = app
