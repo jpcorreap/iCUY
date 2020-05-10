@@ -5,45 +5,52 @@ const fetchAll = require("../model/user").fetchAll
 const fetchFilter = require("../model/user").fetchFilter
 
 //Register
-exports.postAddUser = async (req, res) => {
+exports.create = (req, res) => {
 
-  const inputUser = req.body.user
+  const inputUser = req.body
   let errMessage
 
   if (!inputUser.name)
     errMessage = "Name is required"
-  if (!inputUser.email && !errMessage)
-    errMessage = "Email is required"
+
   if (!inputUser.password && !errMessage)
     errMessage = "Password is required"
+
   if (!inputUser.birthdate && !errMessage)
     errMessage = "Birth date is required"
-  if (!inputUser.gender && !errMessage)
-    errMessage = "Gender is required"
 
-  errMessage = await validateEmail(inputUser.email)
-    
+  if (!inputUser.photo && !errMessage)
+    inputUser.photo = ""
+
+  if(!errMessage)
+    errMessage = validateEmail(inputUser.email)
+
+
+  //  TODO: Photo verification AI
+  //  TODO: Birthdate Verification: format
+
+
   if (!errMessage) {
     const user = new User(inputUser)
-    user.save()
+    user.addNew()
       .then(() => {
-        res.status(200).json("User created")
+        res.status(200).json({ "message": "New user registered" })
       })
       .catch(err => {
         res.status(409).json(err)
-        throw (err)
       })
   }
   else {
-    res.status(409).json(errMessage)
+    res.status(409).json({ "message": errMessage })
   }
 
 }
 
-exports.getAllUsers = (req, res) => {
+//  This method could be better
+
+exports.getAll = (req, res) => {
   fetchAll()
     .then(users => {
-      console.log("Usuario creado")
       res.status(200).json(users)
     })
     .catch(err => {
@@ -51,7 +58,7 @@ exports.getAllUsers = (req, res) => {
     })
 }
 
-exports.getUsersByFilter = (req, res) => {
+exports.getFilter = (req, res) => {
   const name = req.query.name
   const email = req.query.email
 
@@ -65,18 +72,16 @@ exports.getUsersByFilter = (req, res) => {
 }
 
 
-const validateEmail = async (email) => {
+const validateEmail = (email) => {
   const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/
-  let existsEmail = false
-  let message = ""
+  let message
+
+  if (!email)
+    message = "Email is required"
+
   if (!re.test(email))
     message = "Email not valid"
-  await fetchFilter(email)
-    .then(users => { existsEmail = users.length > 0 ? true : false })
-    .catch(err => { console.log(err) })
-  if (existsEmail)
-    return "The account already exists"
-  return message === "" ? undefined : message
 
+  return message
 }
 

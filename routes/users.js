@@ -1,13 +1,17 @@
 const express = require('express')
 const router = express.Router()
 
-const saveUser = require('../controllers/users').postAddUser
-const getAllUsers = require('../controllers/users').getAllUsers
-const getUsersByFilter = require('../controllers/users').getUsersByFilter
+const post = require('../controllers/users').create
+const get = require('../controllers/users').getAll
+const getF = require('../controllers/users').getFilter
 
-/* GET users controller. */
-router.post('/', saveUser)
-router.get('/', getAllUsers)
-router.get('/filter', getUsersByFilter)
+/** Save (CREATE and UPDATE user) */
+router.post('/', post)
+
+/** Get list of all users in the system */
+router.get('/', get)
+
+/** Get list of all users that meet the requirements */
+router.get('/filter', getF)
 
 module.exports = router

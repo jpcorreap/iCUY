@@ -10,6 +10,8 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 const usersRouter = require('./routes/users')
+const habitsRouter = require('./routes/habits')
+const recordsRouter = require('./routes/records')
 
 const app = express()
 
@@ -22,6 +24,9 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, "front/build")));
 
 app.use('/users', usersRouter)
+app.use('/habits', habitsRouter)
+app.use('/records', recordsRouter)
+
 
 app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname + "/front/build/index.html"));
@@ -48,6 +53,5 @@ app.use((err, req, res, next) => {
     error: err
   })
 })
-
 
 module.exports = app
