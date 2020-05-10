@@ -21,7 +21,7 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
-app.use(express.static(path.join(__dirname, "front/build")));
+app.use(express.static(path.join(__dirname, "front/public")));
 
 app.use('/users', usersRouter)
 app.use('/habits', habitsRouter)
@@ -29,7 +29,7 @@ app.use('/records', recordsRouter)
 
 
 app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname + "/front/build/index.html"));
+  res.sendFile(path.join(__dirname + "/front/public/index.html"));
 });
 
 
