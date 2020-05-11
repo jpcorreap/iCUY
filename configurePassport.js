@@ -53,10 +53,13 @@ async function (accessToken, refreshToken, profile, cb) {
 ));
 
 passport.serializeUser(function (user, cb) {
+  console.log("serialize",user);
   cb(null, user.email);
 });
 
 passport.deserializeUser(function (username, cb) {
+  console.log("deserialize", username);
+
   fetchFilter(username).then(users => {
     const user = users.length > 0 ? users[0] : undefined;
     if (user) {
