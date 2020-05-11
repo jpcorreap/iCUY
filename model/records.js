@@ -72,11 +72,11 @@ const fetchFilter = (date, habitTitle, userEmail) => {
     if (date) {
         query.date = date
     }
-    if (habit_Id) {
-        query.habit_Id = habitTitle
+    if (habitTitle) {
+        query.habitTitle = habitTitle
     }
-    if (user_Id) {
-        query.user_Id = userEmail
+    if (userEmail) {
+        query.userEmail = userEmail
     }
     //  Getting Database
     const db = getDb()

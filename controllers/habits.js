@@ -63,10 +63,10 @@ exports.getFilter = (req, res) => {
     //  Title filter
     const title = req.query.title
     //  userEmail filter
-    const user_Id = req.query.user_Id
+    const userEmail = req.query.userEmail
 
     if (title && userEmail) {
-        fetchFilter(title, user_Id)
+        fetchFilter(title, userEmail)
             .then(habits => {
                 res.status(200).json(habits)
             })

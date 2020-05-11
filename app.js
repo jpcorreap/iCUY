@@ -16,6 +16,7 @@ const recordsRouter = require('./routes/records')
 const app = express()
 
 // view engine none: React
+app.disable('etag');
 
 app.use(logger('dev'))
 app.use(express.json())
