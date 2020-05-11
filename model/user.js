@@ -1,15 +1,23 @@
 "use strict";
+const mongodb = require("mongodb");
 const getDb = require("../util/dbManager").getDb;
 
 
 class User {
 
   constructor(user) {
-    if(user){
-    /**
-     * The user's name
-     * Required
-     */
+    if (user) {
+
+      /**
+       * The user's _id
+       * Required
+       */
+      this._id = user.id?new mongodb.ObjectID(id):undefined;
+
+      /**
+       * The user's name
+       * Required
+       */
       this.name = user.name;
 
       /**
@@ -60,9 +68,9 @@ class User {
      */
       this.photo = user.photo;
 
-    /**
-     * For the Unique value, the database actually verifies if (email) to be unique
-     */
+      /**
+       * For the Unique value, the database actually verifies if (email) to be unique
+       */
     }
   }
 
@@ -73,6 +81,18 @@ class User {
     return db
       .collection("users")
       .insertOne(this)
+      .then()
+      .catch(err => {
+        throw err;
+      });
+  }
+
+  update() {
+    //  Getting Database
+    const db = getDb();
+    //  Returning response from habit creation
+    return db.collection("users")
+      .updateOne({ _id: this._id }, { $set: this }, { upsert: true })
       .then()
       .catch(err => {
         throw err;

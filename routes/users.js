@@ -4,6 +4,8 @@ const router = express.Router();
 const post = require("../controllers/users").create;
 const get = require("../controllers/users").getAll;
 const getF = require("../controllers/users").getFilter;
+const update = require("../controllers/users").update;
+
 
 /** Save (CREATE and UPDATE user) */
 router.post("/", post);
@@ -13,5 +15,8 @@ router.get("/", get);
 
 /** Get list of all users that meet the requirements */
 router.get("/filter", getF);
+
+/** Update the user info that have the UUID */
+router.post("/update", update);
 
 module.exports = router;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import GraphBoolean from './GraphBoolean'
 import GraphNumber from './GraphNumber'
+import GraphNumber from './GraphHour'
 
 const D3 = (props) => {
 
@@ -67,7 +68,7 @@ const D3 = (props) => {
             <div className="w-100 p-3 h-75 overflow-auto" style={{ maxWidth: '100%' }}>
                 {habit.inputType === 'boolean' ? records?<GraphBoolean data={records} />:""  :
                     habit.inputType === 'number' ? records?<GraphNumber data={records} />:"" :
-                        habit.inputType === 'hour' ? <div>Hour</div> :
+                        habit.inputType === 'hour' ? records?<GraphNumber data={records} />:""  :
                             habit.inputType === 'date' ? <div>Date</div> : ""}
             </div>
         </div>

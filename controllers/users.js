@@ -14,17 +14,24 @@ exports.create = (req, res) => {
   if (!inputUser.name)
     errMessage = "Name is required";
 
-  if (!inputUser.password && !errMessage)
-    errMessage = "Password is required";
-
   if (!inputUser.birthdate && !errMessage)
     errMessage = "Birth date is required";
 
   if (!inputUser.photo && !errMessage)
     inputUser.photo = "";
 
-  if(!errMessage)
+  if (!errMessage)
     errMessage = validateEmail(inputUser.email);
+
+  if (!inputUser.isGoogle && !errMessage) {
+    if (!inputUser.password)
+      errMessage = "Password is required";
+    else {
+      const hash = crypto.createHash("sha256");
+      hash.update(inputUser.password);
+      inputUser.password = hash.digest("hex");
+    }
+  }
 
 
   //  TODO: Photo verification AI
@@ -32,9 +39,6 @@ exports.create = (req, res) => {
 
 
   if (!errMessage) {
-    const hash = crypto.createHash("sha256");
-    hash.update(inputUser.password);
-    inputUser.password = hash.digest("hex");
     const user = new User(inputUser);
     user.addNew()
       .then(() => {
@@ -49,6 +53,38 @@ exports.create = (req, res) => {
   }
 
 };
+
+//  Update
+
+exports.update = (req, res) => {
+
+  const inputUser = req.body;
+  let errMessage;
+
+  if (!inputUser._id)
+    errMessage = "User UUID required";
+
+  if (inputUser.password)
+    const hash = crypto.createHash("sha256");
+    hash.update(inputUser.password);
+    inputUser.password = hash.digest("hex");
+  }
+
+  if (!errMessage) {
+    const user = new User(inputUser);
+    user.update()
+      .then(() => {
+        res.status(200).json({ "message": "User updated" });
+      })
+      .catch(err => {
+        res.status(409).json(err);
+      });
+  }
+  else {
+    res.status(409).json({ "message": errMessage });
+  }
+
+}
 
 //  This method could be better
 
