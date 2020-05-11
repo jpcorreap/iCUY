@@ -26,7 +26,7 @@ GOOGLE_CLIENT = "The google Client id"
 GOOGLE_SECRET = "The google ID secret"
 PASSPORT_SECRET = "The password secret for google"
 ```
-It will create a database named: help-service.
+It will create a database named: icuy.
 
 
 ## Demo
