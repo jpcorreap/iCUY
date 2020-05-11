@@ -5,8 +5,6 @@ const GraphNumber = (props) => {
 
     const data = props.data
 
-    console.log(data)
-
     data.sort((a, b) => {
         let AEl = new Date(a.date), BEl = new Date(b.date);
         if (AEl < BEl) return -1;
