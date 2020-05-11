@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FcGoogle } from 'react-icons/fc';
 function Login() {
     console.log("login")
     const [registered, setRegistered] = useState(true);
@@ -18,6 +19,9 @@ function Login() {
                         </div>
                         <button className="btn btn-primary centrado-h submit" type="submit">
                             Ingresar
+                        </button>
+                        <button onClick={() => window.location.reload(false)} className="btn btn-light centrado-h google" >
+                            <FcGoogle /> Ingresa con Google
                         </button>
                     </form>
                     <div className='text-light'>
@@ -61,7 +65,11 @@ function Login() {
                         <button onClick={() =>window.location.reload(false)} className="btn btn-primary centrado-h submit" type="submit">
                             Registrarse
                         </button>
+
                     </form>
+                        <button onClick={() => fetch("/auth/google")} className="btn btn-light centrado-h google" >
+                            <FcGoogle/> Ingresa con Google
+                        </button>
                     <div className='text-light'>
                         ¿Ya tienes una cuenta?
                     <button className="btn btn-link btn-secondary" onClick={()=>setRegistered(true)}>Ingresa</button>

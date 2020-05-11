@@ -68,9 +68,10 @@
         font-size: 12px;
     }
 
-    .submit {
+    .submit, .google {
         position: relative;
-        padding: 10px 115px;
+        padding: 10px 0;
+        width: 100%;
         font-size: 13px;
         letter-spacing: 2px;
         text-decoration: none;

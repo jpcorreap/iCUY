@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
+import {
+    Link
+} from "react-router-dom";
 import logo from "../assets/icuymaslogo.png";
 import libreta from "../assets/libreta.png"
 function LandPage() {
     return (
         <div className="LandPage">
             <nav>
-                <a className="logo">
+                <a className="logo" href="/">
                     <img className="centrado-v" alt="Logo iCUY" src={logo}></img>
                 </a>
-                <button className="btn btn-outline btn-primary main-btn centrado-v">
-                    Ingresa
+                <Link to="/login">
+                    <button className="btn btn-outline btn-primary main-btn centrado-v" href="/login">
+                        Ingresa
                 </button>
+                </Link>
             </nav>
             <div className="intro">
                 <div className="cover"></div>
@@ -24,9 +29,11 @@ function LandPage() {
                             <p>Organiza y guia tu vida para ser la mejor version de ti mismo</p>
                             <h3>Haz de la felicidad tu habito</h3>
                         </div>
-                        <button className="btn btn-primary centrado-h inicio">
-                            Empieza Ya
-                        </button>
+                        <Link to="/login">
+                            <button className="btn btn-primary centrado-h inicio" href="/login">
+                                Empieza Ya
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -40,7 +47,7 @@ function LandPage() {
                             <h2>Facil de Usar</h2>
                         </div>
                         <div className="description">
-                            
+
                         </div>
                     </div>
                     <div className="col-4">
@@ -99,9 +106,11 @@ function LandPage() {
             </div>
             <div className="fourth">
                 <h1 className="title centrado-v">Listo para Mejorar</h1>
-                <button className="btn btn-primary inicio centrado-v">
-                    Empieza Ya
-                </button>
+                <Link to="/login">
+                    <button className="btn btn-primary inicio centrado-v" href="/login">
+                        Empieza Ya
+                    </button>
+                </Link>
             </div>
         </div>
     );

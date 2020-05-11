@@ -5,7 +5,7 @@ const passport = require("passport");
 router.post("/login",
   passport.authenticate("local", { failureRedirect: "/login" }),
   function (req, res) {
-    res.redirect("/");
+    res.redirect("/platform");
   });
 
 router.get("/logout",
@@ -26,6 +26,6 @@ router.get("/google/callback",
   passport.authenticate("google", { failureRedirect: "/login" }),
   function (req, res) {
     // Successful authentication, redirect home.
-    res.redirect("/");
+    res.redirect("/platform");
   });
 module.exports = router;
