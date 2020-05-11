@@ -1,17 +1,17 @@
-const express = require('express')
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 
-const post = require('../controllers/users').create
-const get = require('../controllers/users').getAll
-const getF = require('../controllers/users').getFilter
+const post = require("../controllers/users").create;
+const get = require("../controllers/users").getAll;
+const getF = require("../controllers/users").getFilter;
 
 /** Save (CREATE and UPDATE user) */
-router.post('/', post)
+router.post("/", post);
 
 /** Get list of all users in the system */
-router.get('/', get)
+router.get("/", get);
 
 /** Get list of all users that meet the requirements */
-router.get('/filter', getF)
+router.get("/filter", getF);
 
-module.exports = router
+module.exports = router;
