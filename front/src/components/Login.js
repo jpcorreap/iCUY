@@ -20,7 +20,8 @@ function Login() {
                         <button className="btn btn-primary centrado-h submit" type="submit">
                             Ingresar
                         </button>
-                        <button onClick={() => window.location.reload(false)} className="btn btn-light centrado-h google" >
+
+                        <button onClick={() => window.location.href = "/auth/google"} className="btn btn-light centrado-h google" >
                             <FcGoogle /> Ingresa con Google
                         </button>
                     </form>
@@ -62,14 +63,14 @@ function Login() {
                             <label>Contraseña</label>
                         </div>
 
-                        <button onClick={() =>window.location.reload(false)} className="btn btn-primary centrado-h submit" type="submit">
+                        <button onClick={() =>window.location.replace(false)} className="btn btn-primary centrado-h submit" type="submit">
                             Registrarse
                         </button>
 
-                    </form>
-                        <button onClick={() => fetch("/auth/google")} className="btn btn-light centrado-h google" >
+                        <button onClick={() => window.location.href = "/auth/google"} className="btn btn-light centrado-h google" >
                             <FcGoogle/> Ingresa con Google
                         </button>
+                    </form>
                     <div className='text-light'>
                         ¿Ya tienes una cuenta?
                     <button className="btn btn-link btn-secondary" onClick={()=>setRegistered(true)}>Ingresa</button>

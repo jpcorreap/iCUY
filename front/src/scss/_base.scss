@@ -1,0 +1,26 @@
+nav.Base {
+        z-index: 10;
+        background-color: $secondary;
+        position: absolute;
+        height: 70px;
+        width: 100%;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+        padding: 5px 40px;
+        .logo {
+            height: 100%;
+            img {
+                height: 100%;
+            }
+        }
+        .main-btn {
+            float: right;
+            right: 20px;
+        }
+        .profile{
+            float: right;
+        }
+        .links{
+            position: absolute;
+            left: 200px;
+        }
+    }

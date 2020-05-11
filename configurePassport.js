@@ -28,7 +28,7 @@ passport.use(new GoogleStrategy({
 },
 function (accessToken, refreshToken, profile, cb) {
   console.log(accessToken,refreshToken,profile);
-  // return cb(null, profile);
+  return cb(null, profile["_json"].email);
 }
 ));
 
