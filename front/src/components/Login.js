@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { FcGoogle } from 'react-icons/fc';
 function Login() {
+    console.log("login")
     const [registered, setRegistered] = useState(true);
     if (registered) {
         return (
             <div className="wrapper vh-100 Login">
-                <div className="box centrado">
+                <div className="box">
                     <p className="title">Iniciar Sesión</p>
                     <form action="/auth/login" method="post">
                         <div className="inputBox">
@@ -18,6 +20,9 @@ function Login() {
                         <button className="btn btn-primary centrado-h submit" type="submit">
                             Ingresar
                         </button>
+                        <button onClick={() => window.location.reload(false)} className="btn btn-light centrado-h google" >
+                            <FcGoogle /> Ingresa con Google
+                        </button>
                     </form>
                     <div className='text-light'>
                         ¿No tienes una cuenta?
@@ -29,7 +34,7 @@ function Login() {
     } else {
         return (
             <div className="wrapper vh-100 Login">
-                <div className="box centrado">
+                <div className="box">
                     <p className="title">Registrarse</p>
                     <form action="/users" method="post">
                         <div className="inputBox">
@@ -53,14 +58,6 @@ function Login() {
                             </div>
                         </div>
                         <div className="inputBox">
-                            <input type="text" name="phone" required></input>
-                            <label>Numero de Contacto</label>
-                        </div>
-                        <div className="inputBox">
-                            <input type="text" name="address" required></input>
-                            <label>Dirreccion</label>
-                        </div>
-                        <div className="inputBox">
                             <input type="password" name="password" required ></input>
                             <label>Contraseña</label>
                         </div>
@@ -68,7 +65,11 @@ function Login() {
                         <button onClick={() =>window.location.reload(false)} className="btn btn-primary centrado-h submit" type="submit">
                             Registrarse
                         </button>
+
                     </form>
+                        <button onClick={() => fetch("/auth/google")} className="btn btn-light centrado-h google" >
+                            <FcGoogle/> Ingresa con Google
+                        </button>
                     <div className='text-light'>
                         ¿Ya tienes una cuenta?
                     <button className="btn btn-link btn-secondary" onClick={()=>setRegistered(true)}>Ingresa</button>

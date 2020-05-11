@@ -3,8 +3,9 @@
         position: relative;
         top: 0;
         font-family: sans-serif;
-        // background: url(../assets/help.jpg);
+        background: url(../assets/login.jpg);
         background-size: cover;
+        background-position-y: bottom;
     }
 
     .box {
@@ -14,6 +15,9 @@
         box-sizing: border-box;
         box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
         border-radius: 10px;
+        position: absolute;
+        top: 10%;
+        right: 10%;
     }
 
     .box .link {
@@ -64,9 +68,10 @@
         font-size: 12px;
     }
 
-    .submit {
+    .submit, .google {
         position: relative;
-        padding: 10px 115px;
+        padding: 10px 0;
+        width: 100%;
         font-size: 13px;
         letter-spacing: 2px;
         text-decoration: none;

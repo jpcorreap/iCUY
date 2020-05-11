@@ -1,0 +1,138 @@
+.LandPage {
+    nav {
+        z-index: 10;
+        background-color: white;
+        position: absolute;
+        height: 70px;
+        width: 100%;
+        overflow: hidden;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+        padding: 5px 40px;
+        .logo {
+            height: 100%;
+            img {
+                height: 100%;
+            }
+        }
+        .main-btn {
+            float: right;
+            right: 20px;
+        }
+    }
+    .intro {
+        background: #4192a2;
+        height: 100vh;
+        padding: 30px 5% 30px 20%;
+        .cover {
+            height: 30%;
+            width: 100%;
+            position: absolute;
+            background: #0e4b6e;
+            bottom: 0;
+            left: 0;
+        }
+        .intro-img {
+            position: absolute;
+            height: 70%;
+        }
+        .intro-text {
+            text-align: center;
+            color: white;
+            .title {
+                font-size: 80px;
+                margin-bottom: 40px;
+            }
+            p {
+                font-size: 40px;
+            }
+            h3 {
+                color: $tertiary;
+                font-size: 30px;
+            }
+        }
+        .inicio{
+            position: absolute;
+            bottom: 170px;
+            height: 60px;
+            width: 120;
+            font-size: 30px;
+        }
+    }
+    .second {
+        background: #fafafa;
+        height: 70vh;
+        padding: 5% 10%;
+        text-align: center;
+        .title {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        .subtitle {
+            font-size: 30px;
+            padding: 0 10%;
+            color: $medium;
+            margin-bottom: 120px;
+        }
+        .header {
+            color: $secondary;
+            height: 30px;
+        }
+        .description {
+            color: $medium;
+        }
+    }
+    .third {
+        padding: 5vh 10vw;
+        .title {
+            text-align: center;
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        .step {
+            padding: 30px 40px 10px 100px;
+            position: relative;
+            .number {
+                position: absolute;
+                height: 60px;
+                width: 60px;
+                top: 20px;
+                left: 20px;
+                background-color: $secondary;
+                color: white;
+                border-radius: 50%;
+                .num {
+                    font-size: 40px;
+                    font-weight: 900;
+                }
+            }
+            .header {
+                color: $secondary;
+                margin-bottom: 30px;
+            }
+            .description {
+                color: $tertiary;
+                font-size: 20px;
+            }
+        }
+    }
+    .fourth{
+        height: 30vh;
+        background-color: $tertiary;
+        padding: 5vh 10vw;
+        display: inline-flex;
+    width: 100%;
+        .title{
+            width: 70%;
+            font-size: 80px;
+            color: white;
+            height: fit-content;
+        }
+        .inicio{
+            height: 60px;
+            width: 120;
+            font-size: 30px;
+            float: right;
+
+        }
+    }
+}
