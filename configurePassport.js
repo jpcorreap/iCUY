@@ -43,7 +43,7 @@ async function (accessToken, refreshToken, profile, cb) {
       };
       console.log("nuevo",data);
       return await createUser(data).then(() => {
-        return cb(null, user);
+        return cb(null, user.email);
       }).catch(err=>{          
         return cb(err);
       });
