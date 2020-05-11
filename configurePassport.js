@@ -26,16 +26,36 @@ passport.use(new GoogleStrategy({
   clientSecret: envGSecret,
   callbackURL: "https://icuy.herokuapp.com/auth/google/callback"
 },
-function (accessToken, refreshToken, profile, cb) {
-  console.log(accessToken,refreshToken,profile);
-
-  fetchFilter(profile["_json"].email).then(users => {
-    if (users.length > 0 ){
-      return cb(null, profile["_json"].email);
+async function (accessToken, refreshToken, profile, cb) {
+  console.log(accessToken, refreshToken, profile);
+  let user = profile["_json"];
+  return await fetchFilter(user.email).then(users => {
+    if (users.length > 0) {
+      console.log('ya registrado')
+      return cb(null, user.email);
     }
-    else{
-      
-    } 
+    else {
+      let data = {
+        name: user.name,
+        email: user.email
+      };
+      console.log('nuevo',data)
+
+      return await fetch("https://portalgps.icsdecolombia.com/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+        redirect: "follow"
+      }).then(response => {
+          return response.json().then(resp => {
+            console.log('respuesta', resp);
+            if (!response.ok)
+              return cb(resp);
+            return cb(null, user.email);
+          });
+      });
+
+    }
   });
 }
 ));
