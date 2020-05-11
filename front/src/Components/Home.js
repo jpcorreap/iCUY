@@ -13,8 +13,5 @@ function Home(props) {
         </div>
     );
 }
-Base.propTypes = {
-    user: PropTypes.object.isRequired
-}
 
 export default Home;

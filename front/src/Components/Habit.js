@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from './node_modules/react'
 import GraphBoolean from './GraphBoolean'
 import GraphNumber from './GraphNumber'
-import GraphNumber from './GraphHour'
+import GraphHour from './GraphHour'
 
-const D3 = (props) => {
+const Habit = (props) => {
 
     const [habit, setHabit] = useState({})
     const [records, setRecords] = useState(null)
@@ -59,6 +59,23 @@ const D3 = (props) => {
             })
     }
 
+    const renderSwitch = () => {
+        switch (habit.inputType) {
+            case 'boolean':
+                return records?<GraphBoolean data={records} />:""
+                break;
+            case 'number':
+                return records ? <GraphNumber data={records} /> : ""
+                break;
+            case 'hour':
+                return records ? <GraphHour data={records} /> : ""
+                break;
+            default:
+                return ""
+                break;
+        }
+    }
+
     return (
         <div>
             <div className="w-100 p-3 h-25 flex" style={{ background: 'green' }}>
@@ -66,14 +83,11 @@ const D3 = (props) => {
             </div>
             {console.log(records)}
             <div className="w-100 p-3 h-75 overflow-auto" style={{ maxWidth: '100%' }}>
-                {habit.inputType === 'boolean' ? records?<GraphBoolean data={records} />:""  :
-                    habit.inputType === 'number' ? records?<GraphNumber data={records} />:"" :
-                        habit.inputType === 'hour' ? records?<GraphNumber data={records} />:""  :
-                            habit.inputType === 'date' ? <div>Date</div> : ""}
+                {renderSwitch()}
             </div>
         </div>
     )
 
 }
 
-export default D3
+export default Habit
