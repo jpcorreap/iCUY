@@ -4,6 +4,7 @@ const User = require("../model/user").User;
 const fetchAll = require("../model/user").fetchAll;
 const fetchFilter = require("../model/user").fetchFilter;
 const crypto = require("crypto");
+const hash = crypto.createHash("sha256");
 
 //Register
 exports.create = (req, res) => {
@@ -13,9 +14,6 @@ exports.create = (req, res) => {
 
   if (!inputUser.name)
     errMessage = "Name is required";
-
-  if (!inputUser.birthdate && !errMessage)
-    errMessage = "Birth date is required";
 
   if (!inputUser.photo && !errMessage)
     inputUser.photo = "";
@@ -27,7 +25,6 @@ exports.create = (req, res) => {
     if (!inputUser.password)
       errMessage = "Password is required";
     else {
-      const hash = crypto.createHash("sha256");
       hash.update(inputUser.password);
       inputUser.password = hash.digest("hex");
     }
@@ -64,8 +61,7 @@ exports.update = (req, res) => {
   if (!inputUser._id)
     errMessage = "User UUID required";
 
-  if (inputUser.password)
-    const hash = crypto.createHash("sha256");
+  if (inputUser.password){
     hash.update(inputUser.password);
     inputUser.password = hash.digest("hex");
   }
@@ -83,8 +79,7 @@ exports.update = (req, res) => {
   else {
     res.status(409).json({ "message": errMessage });
   }
-
-}
+};
 
 //  This method could be better
 
