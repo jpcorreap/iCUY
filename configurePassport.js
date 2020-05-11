@@ -3,6 +3,7 @@ var passport = require("passport");
 var Strategy = require("passport-local").Strategy;
 var GoogleStrategy = require("passport-google-oauth20").Strategy;
 const fetchFilter = require("./model/user").fetchFilter;
+const createUser = require("./controllers/users").create;
 const crypto = require("crypto");
 const envGClient = process.env.GOOGLE_CLIENT;
 const envGSecret = process.env.GOOGLE_SECRET;
@@ -41,17 +42,11 @@ async function (accessToken, refreshToken, profile, cb) {
       };
       console.log("nuevo",data);
 
-      return await fetch("https://portalgps.icsdecolombia.com/users", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-        redirect: "follow"
-      }).then(response => {
-        return response.json().then(resp => {
-          console.log("respuesta", resp);
-          if (!response.ok)
-            return cb(resp);
+      return await createUser(data).then(response => {
+        return response.json().then(() => {
           return cb(null, user.email);
+        }).catch(err=>{          
+          return cb(err);
         });
       });
 

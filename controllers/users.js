@@ -7,9 +7,9 @@ const crypto = require("crypto");
 const hash = crypto.createHash("sha256");
 
 //Register
-exports.create = (req, res) => {
+exports.create = (user) => {
 
-  const inputUser = req.body;
+  const inputUser = user;
   let errMessage;
 
   if (!inputUser.name)
@@ -29,24 +29,16 @@ exports.create = (req, res) => {
       inputUser.password = hash.digest("hex");
     }
   }
-
-
   //  TODO: Photo verification AI
   //  TODO: Birthdate Verification: format
-
-
   if (!errMessage) {
     const user = new User(inputUser);
-    user.addNew()
-      .then(() => {
-        res.status(200).json({ "message": "New user registered" });
-      })
-      .catch(err => {
-        res.status(409).json(err);
-      });
+    return user.addNew();      
   }
   else {
-    res.status(409).json({ "message": errMessage });
+    return new Promise ((resolve,reject)=>{
+      reject(errMessage);
+    });
   }
 
 };

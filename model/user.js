@@ -12,7 +12,7 @@ class User {
        * The user's _id
        * Required
        */
-      this._id = user.id?new mongodb.ObjectID(id):undefined;
+      this._id = user.id?new mongodb.ObjectID(user.id):undefined;
 
       /**
        * The user's name
