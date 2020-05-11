@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from './node_modules/react'
+import React, { useState, useEffect } from 'react'
 import GraphBoolean from './GraphBoolean'
 import GraphNumber from './GraphNumber'
 import GraphHour from './GraphHour'

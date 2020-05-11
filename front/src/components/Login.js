@@ -1,5 +1,5 @@
-import React, { useState } from './node_modules/react';
-import { FcGoogle } from './node_modules/react-icons/fc';
+import React, { useState } from 'react';
+import { FcGoogle } from 'react-icons/fc';
 function Login() {
     console.log("login")
     const [registered, setRegistered] = useState(true);

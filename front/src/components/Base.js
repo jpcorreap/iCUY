@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from './node_modules/react';
+import React, { useState, useEffect } from 'react';
 import {
     Switch,
     Route,
-} from "./node_modules/react-router-dom";
-import PropTypes from "./node_modules/prop-types";
+} from "react-router-dom";
+import PropTypes from "prop-types";
 import Home from "./Home";
 // import Profile from "./Profile";
 import logo from "../assets/icuymaslogo.png";

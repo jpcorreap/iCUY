@@ -1,7 +1,7 @@
-import React, { useState } from './node_modules/react';
+import React, { useState } from 'react';
 import {
     Link
-} from "./node_modules/react-router-dom";
+} from "react-router-dom";
 import logo from "../assets/icuymaslogo.png";
 import libreta from "../assets/libreta.png"
 function LandPage() {
