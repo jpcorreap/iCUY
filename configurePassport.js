@@ -29,9 +29,9 @@ passport.use(new GoogleStrategy({
 async function (accessToken, refreshToken, profile, cb) {
   console.log(accessToken, refreshToken, profile);
   let user = profile["_json"];
-  return await fetchFilter(user.email).then(users => {
+  return await fetchFilter(user.email).then(async users => {
     if (users.length > 0) {
-      console.log('ya registrado')
+      console.log("ya registrado");
       return cb(null, user.email);
     }
     else {
@@ -39,7 +39,7 @@ async function (accessToken, refreshToken, profile, cb) {
         name: user.name,
         email: user.email
       };
-      console.log('nuevo',data)
+      console.log("nuevo",data);
 
       return await fetch("https://portalgps.icsdecolombia.com/users", {
         method: "POST",
@@ -47,12 +47,12 @@ async function (accessToken, refreshToken, profile, cb) {
         body: JSON.stringify(data),
         redirect: "follow"
       }).then(response => {
-          return response.json().then(resp => {
-            console.log('respuesta', resp);
-            if (!response.ok)
-              return cb(resp);
-            return cb(null, user.email);
-          });
+        return response.json().then(resp => {
+          console.log("respuesta", resp);
+          if (!response.ok)
+            return cb(resp);
+          return cb(null, user.email);
+        });
       });
 
     }
