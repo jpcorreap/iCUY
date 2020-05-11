@@ -1,4 +1,4 @@
-# help-service
+# iCUY
 
 ## iCUY:
 
@@ -15,7 +15,17 @@ iCUY web-app is an open source application that allows user to manage his habits
 
 2. Install Mongodb module (you could use npm install -g mongodb in your command prompt)
 
-3. Set in your Enviroment Variables the data base credentials. This environment variable must be called: "NODE_URL_HELP" and must contain complete url of access to the database.
+3. Set in your Enviroment Variables the data base and Gooogle API credentials. 
+This environment variable must be called:
+```bash
+MONGO_DB_NAME = "Database name"
+MONGO_DB_URL = "The url of the database"
+MONGO_DB_USER = "the Database user"
+MONGO_DB_PASSWORD =  "The database password"
+GOOGLE_CLIENT = "The google Client id"
+GOOGLE_SECRET = "The google ID secret"
+PASSPORT_SECRET = "The password secret for google"
+```
 It will create a database named: help-service.
 
 
