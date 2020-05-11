@@ -42,15 +42,11 @@ async function (accessToken, refreshToken, profile, cb) {
         isGoogle:true
       };
       console.log("nuevo",data);
-
-      return await createUser(data).then(response => {
-        return response.json().then(() => {
-          return cb(null, user.email);
-        }).catch(err=>{          
-          return cb(err);
-        });
+      return await createUser(data).then(() => {
+        return cb(null, user.email);
+      }).catch(err=>{          
+        return cb(err);
       });
-
     }
   });
 }
