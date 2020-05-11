@@ -15,7 +15,7 @@ passport.use(new Strategy(function (username, password, cb) {
     const hash = crypto.createHash("sha256");
     hash.update(password);
     if (user && user.password == hash.digest("hex")) {
-      return cb(null, user);
+      return cb(null, user.email);
     }
     return cb(null, false);
   });
@@ -43,7 +43,7 @@ async function (accessToken, refreshToken, profile, cb) {
       };
       console.log("nuevo",data);
       return await createUser(data).then(() => {
-        return cb(null, user.email);
+        return cb(null, user);
       }).catch(err=>{          
         return cb(err);
       });
@@ -54,7 +54,7 @@ async function (accessToken, refreshToken, profile, cb) {
 
 passport.serializeUser(function (user, cb) {
   console.log("serialize",user);
-  cb(null, user.email);
+  cb(null, user);
 });
 
 passport.deserializeUser(function (username, cb) {
