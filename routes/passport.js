@@ -20,7 +20,7 @@ router.get("/user",
 
 
 router.get("/google",
-  passport.authenticate("google", { scope: ["profile"] }));
+  passport.authenticate("google",  { scope: ["openid", "email", "profile"] }));
 
 router.get("/google/callback",
   passport.authenticate("google", { failureRedirect: "/login" }),
