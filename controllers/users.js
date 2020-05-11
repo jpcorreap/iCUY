@@ -62,11 +62,9 @@ exports.update = (req, res) => {
   let errMessage;
 
   if (!inputUser._id)
-  errMessage = "User UUID required";
+    errMessage = "User UUID required";
 
-  if (!inputUser.password)
-    errMessage = "Password is required";
-  else {
+  if (inputUser.password)
     const hash = crypto.createHash("sha256");
     hash.update(inputUser.password);
     inputUser.password = hash.digest("hex");
@@ -74,7 +72,7 @@ exports.update = (req, res) => {
 
   if (!errMessage) {
     const user = new User(inputUser);
-    user.addNew()
+    user.update()
       .then(() => {
         res.status(200).json({ "message": "User updated" });
       })
