@@ -6,23 +6,29 @@ import {
   Redirect*/
 } from "react-router-dom";
 import "./scss/styles.scss"
-
-import Habit from './Components/Habit'
-
+import Login from "./components/Login"
+import Base from "./components/Base"
 function App() {
+  const [user, setUser] = useState({})
 
+  useEffect(() => {
+    fetch("/auth/user")
+      .then(res => res.json())
+      .then(usr => {
+        console.log(usr);
+        setUser(usr);
+      })
+  }, [])
   return (
     <Router>
-      <Switch>
-        {/* <Route path="/login">
-            {user? <Redirect to="/"/>:<Login />}
-          </Route> */}
-        {<Route path="/d3">
-          <Habit
-            title="ToJog"
-            userEmail="jm.contreras10@uniandes.edu.co" />
-        </Route>}
-      </Switch>
+        <Switch>
+        <Route path="/login">
+          {user ? <Redirect to="/" /> : <Login />}
+        </Route>
+        <Route path="/">
+          {user ? <Base user={user} /> : <Redirect to="/login" />}
+        </Route>
+        </Switch>
     </Router>
   );
 }
