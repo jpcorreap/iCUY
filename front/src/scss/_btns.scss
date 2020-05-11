@@ -44,7 +44,12 @@
     border-color: $btn-color;
     &:hover,
     &:focus,
-    &:active {
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active,
+    &:not(:disabled):not(.disabled):active:focus,
+    &:not(:disabled):not(.disabled).active:focus,
+    &:active:hover,
+    &.active:hover {
       background-color: transparent;
       color: $btn-tint;
       border-color: $btn-tint;
@@ -52,21 +57,24 @@
     }
   }
 
-
   &.btn-link {
     color: $btn-color;
     background: none;
     border: none;
     &:hover,
     &:focus,
-    &:active {
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active,
+    &:not(:disabled):not(.disabled):active:focus,
+    &:not(:disabled):not(.disabled).active:focus,
+    &:active:hover,
+    &.active:hover {
       background-color: transparent;
       color: $btn-tint;
-      text-decoration: none;
+      text-decoration: underline;
       box-shadow: none;
     }
   }
-
 }
 
 .btn-primary {

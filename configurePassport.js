@@ -8,7 +8,6 @@ const envGClient = process.env.GOOGLE_CLIENT;
 const envGSecret = process.env.GOOGLE_SECRET;
 const envPSecret = process.env.PASSPORT_SECRET;
 
-
 passport.use(new Strategy(function (username, password, cb) {
   fetchFilter(username).then(users => {
     const user = users.length > 0 ? users[0] : undefined;

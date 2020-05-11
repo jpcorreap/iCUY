@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 function Login() {
+    console.log("login")
     const [registered, setRegistered] = useState(true);
     if (registered) {
         return (
             <div className="wrapper vh-100 Login">
-                <div className="box centrado">
+                <div className="box">
                     <p className="title">Iniciar Sesión</p>
                     <form action="/auth/login" method="post">
                         <div className="inputBox">
@@ -29,7 +30,7 @@ function Login() {
     } else {
         return (
             <div className="wrapper vh-100 Login">
-                <div className="box centrado">
+                <div className="box">
                     <p className="title">Registrarse</p>
                     <form action="/users" method="post">
                         <div className="inputBox">
@@ -51,14 +52,6 @@ function Login() {
                                     <label className='text-light'>Mujer</label>
                                 </div>
                             </div>
-                        </div>
-                        <div className="inputBox">
-                            <input type="text" name="phone" required></input>
-                            <label>Numero de Contacto</label>
-                        </div>
-                        <div className="inputBox">
-                            <input type="text" name="address" required></input>
-                            <label>Dirreccion</label>
                         </div>
                         <div className="inputBox">
                             <input type="password" name="password" required ></input>

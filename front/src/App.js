@@ -8,8 +8,9 @@ import {
 import "./scss/styles.scss"
 import Login from "./components/Login"
 import Base from "./components/Base"
+import LandPage from "./components/LandPage"
 function App() {
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
     fetch("/auth/user")
@@ -21,14 +22,17 @@ function App() {
   }, [])
   return (
     <Router>
-        <Switch>
+      <Switch>
         <Route path="/login">
-          {user ? <Redirect to="/" /> : <Login />}
+          {user ? <Redirect to="/platform" /> : <Login />}
         </Route>
-        <Route path="/">
+        <Route path="/platform">
           {user ? <Base user={user} /> : <Redirect to="/login" />}
         </Route>
-        </Switch>
+        <Route path="/">
+          <LandPage />
+        </Route>
+      </Switch>
     </Router>
   );
 }
