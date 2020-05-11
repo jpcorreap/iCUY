@@ -1,17 +1,17 @@
-const express = require('express')
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 
-const post = require('../controllers/records').create
-const get = require('../controllers/records').getAll
-const getF = require('../controllers/records').getFilter
+const post = require("../controllers/records").create;
+const get = require("../controllers/records").getAll;
+const getF = require("../controllers/records").getFilter;
 
 /** Save (CREATE and UPDATE record) */
-router.post('/', post)
+router.post("/", post);
 
 /** Get list of all records in the system */
-router.get('/', get)
+router.get("/", get);
 
 /** Get list of all recorsa that meet the requirements */
-router.get('/filter', getF)
+router.get("/filter", getF);
 
-module.exports = router
+module.exports = router;

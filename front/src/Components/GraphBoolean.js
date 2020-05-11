@@ -1,4 +1,4 @@
-import React from 'react'
+import React from './node_modules/react'
 import Chart from 'react-apexcharts'
 
 const GraphBoolean = (props) => {
@@ -55,17 +55,15 @@ const GraphBoolean = (props) => {
     )
 
     const options = {
-        series = {
+        series : {
             name: "Done",
             data: records
         }
     }
 
-    const
-
     return (
         <div className="w-100 h-75 position-absolute bottom-0 ">
-            <Chart options={options} series={series} type="heatmap" width={"80%"} height={"100%"} />
+            <Chart options={options} type="heatmap" width={"80%"} height={"100%"} />
         </div>
     )
 

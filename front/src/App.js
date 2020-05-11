@@ -5,11 +5,13 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
+
 import "./scss/styles.scss"
 import Login from "./components/Login"
 import Base from "./components/Base"
 import LandPage from "./components/LandPage"
 import Habit from "./components/Habit"
+
 function App() {
   const [user, setUser] = useState(null)
 
@@ -21,6 +23,7 @@ function App() {
         setUser(usr);
       })
   }, [])
+  
   return (
     <Router>
       <Switch>
@@ -30,9 +33,9 @@ function App() {
         <Route path="/platform">
           {user ? <Base user={user} /> : <Redirect to="/login" />}
         </Route>
-        <Route path="/d3">
+        <Route path="/habits">
           <Habit
-            title="ToJog"
+            title="ToMeditate"
             userEmail="jm.contreras10@uniandes.edu.co" />
         </Route>
         <Route path="/">

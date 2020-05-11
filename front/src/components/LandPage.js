@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState } from './node_modules/react';
 import {
     Link
-} from "react-router-dom";
+} from "./node_modules/react-router-dom";
 import logo from "../assets/icuymaslogo.png";
 import libreta from "../assets/libreta.png"
 function LandPage() {
@@ -47,32 +47,32 @@ function LandPage() {
                             <h2>Facil de Usar</h2>
                         </div>
                         <div className="description">
-
+                            El ciudadoso diseño de la plataforma permite a cualquier usuario usarla de la manera que desee.
                         </div>
                     </div>
                     <div className="col-4">
                         <div className="header">
                             {/* <img alt="" src={}></img> */}
-                            <h2>Facil de Usar</h2>
+                            <h2>It's free</h2>
                         </div>
                         <div className="description">
-
+                            El unico proposito de esta plataforma es ayudar a cualquier persona a mejorar sus vidas, por este motivo es libre de pago.
                         </div>
                     </div>
                     <div className="col-4">
                         <div className="header">
                             {/* <img alt="" src={}></img> */}
-                            <h2>Facil de Usar</h2>
+                            <h2>Avalado por John</h2>
                         </div>
                         <div className="description">
-
+                            John Guerra desarrollador y mentor aprueba esta aplicación (#Aprobado).
                         </div>
                     </div>
                 </div>
             </div>
             <div className="third">
                 <h1 className="title">
-                    The Happy Methodology
+                    Metodología Feliz
                 </h1>
                 <div className="step">
                     <div className="number"><div className="centrado fit num">1</div></div>
@@ -91,7 +91,7 @@ function LandPage() {
                         Registra tus Logros
                     </h2>
                     <p className="description">
-
+                        Añade registros de tu progreso cada ves que puedas.
                     </p>
                 </div>
                 <div className="step">
@@ -100,7 +100,7 @@ function LandPage() {
                         Dale Seguimiento a Tu Progreso
                     </h2>
                     <p className="description">
-
+                        Puedes usar el Panel visual para observar tu avance en los habitos que te has propuesto
                     </p>
                 </div>
             </div>
