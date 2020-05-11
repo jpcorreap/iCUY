@@ -46,18 +46,6 @@ function Login() {
                             <input type="email" name="email" required></input>
                             <label>Email</label>
                         </div>
-                        <div className='container'>
-                            <div className="row w-10">
-                                <div className="col">
-                                    <input type="radio" name='gender' value="male" required></input>
-                                    <label className='text-light'>Hombre</label>
-                                </div>
-                                <div className="col">
-                                    <input type="radio" name='gender' value="female" required></input>
-                                    <label className='text-light'>Mujer</label>
-                                </div>
-                            </div>
-                        </div>
                         <div className="inputBox">
                             <input type="password" name="password" required ></input>
                             <label>Contraseña</label>

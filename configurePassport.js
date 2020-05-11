@@ -28,7 +28,15 @@ passport.use(new GoogleStrategy({
 },
 function (accessToken, refreshToken, profile, cb) {
   console.log(accessToken,refreshToken,profile);
-  return cb(null, profile["_json"].email);
+
+  fetchFilter(profile["_json"].email).then(users => {
+    if (users.length > 0 ){
+      return cb(null, profile["_json"].email);
+    }
+    else{
+      
+    } 
+  });
 }
 ));
 
