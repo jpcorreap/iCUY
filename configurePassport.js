@@ -38,7 +38,8 @@ async function (accessToken, refreshToken, profile, cb) {
     else {
       let data = {
         name: user.name,
-        email: user.email
+        email: user.email,
+        isGoogle:true
       };
       console.log("nuevo",data);
 
