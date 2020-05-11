@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React/*, { useState, useEffect }*/ from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Redirect
+  Route/*,
+  Redirect*/
 } from "react-router-dom";
 import "./scss/styles.scss"
 import Login from "./components/Login"
@@ -36,4 +36,5 @@ function App() {
     </Router>
   );
 }
+
 export default App;

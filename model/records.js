@@ -7,28 +7,28 @@ class Record {
   constructor(record) {
 
     /**
-         * Date of the record
-         */
+             * Date of the record
+             */
     this.date = record.date;
 
     /**
-         * Habit Title
-         */
+             * Habit Title
+             */
     this.habit_Id = record.habitTitle;
 
     /**
-         * User Email
-         */
+             * User Email
+             */
     this.user_Id = record.userEmail;
 
     /**
-         * Value of the input
-         */
+             * Value of the input
+             */
     this.value = record.value;
 
     /**
-         * For the Unique value, the database actually verifies if (date, userEmail, habitTitle) to be unique
-         */
+             * For the Unique value, the database actually verifies if (date, userEmail, habitTitle) to be unique
+             */
 
   }
 
@@ -72,11 +72,11 @@ const fetchFilter = (date, habitTitle, userEmail) => {
   if (date) {
     query.date = date;
   }
-  if (habit_Id) {
-    query.habit_Id = habitTitle;
+  if (habitTitle) {
+    query.habitTitle = habitTitle;
   }
-  if (user_Id) {
-    query.user_Id = userEmail;
+  if (userEmail) {
+    query.userEmail = userEmail;
   }
   //  Getting Database
   const db = getDb();

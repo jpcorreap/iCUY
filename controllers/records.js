@@ -59,10 +59,10 @@ exports.getAll = (req, res) => {
 
 exports.getFilter = (req, res) => {
   const date = req.query.date
-  const habit_Id = req.query.habit_Id
-  const user_Id = req.query.user_Id
+  const habitTitle = req.query.habitTitle
+  const userEmail = req.query.userEmail
 
-  fetchFilter(date, habit_Id, user_Id)
+  fetchFilter(date, habitTitle, userEmail)
     .then(habits => {
       res.status(200).json(habits)
     })
