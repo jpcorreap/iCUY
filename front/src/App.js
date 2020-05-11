@@ -1,14 +1,15 @@
-import React/*, { useState, useEffect }*/ from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route/*,
-  Redirect*/
+  Route,
+  Redirect
 } from "react-router-dom";
 import "./scss/styles.scss"
 import Login from "./components/Login"
 import Base from "./components/Base"
 import LandPage from "./components/LandPage"
+import Habit from "./components/Habit"
 function App() {
   const [user, setUser] = useState(null)
 
@@ -28,6 +29,11 @@ function App() {
         </Route>
         <Route path="/platform">
           {user ? <Base user={user} /> : <Redirect to="/login" />}
+        </Route>
+        <Route path="/d3">
+          <Habit
+            title="ToJog"
+            userEmail="jm.contreras10@uniandes.edu.co" />
         </Route>
         <Route path="/">
           <LandPage />
