@@ -22,18 +22,7 @@ passport.use(new Strategy(function (username, password, cb) {
     }
     return cb(null, false);
   });
-  // fetchFilter(username).then(users => {
-  //   const user = users.length > 0 ? users[0] : undefined;
-  //   const hash = crypto.createHash("sha256");
-  //   hash.update(password);
-  //   if (user && user.password == hash.digest("hex")) {
-  //     return cb(null, user.email);
-  //   }
-  //   else if (user && user.password == null) {
-  //     return cb("Logeate usando Google")
-  //   }
-  //   return cb("El correo o la contraseña estan errados");
-  // });
+  // No es buena práctica dejar tanto código comentado. Juan Pablo Correa.
 })
 );
 
