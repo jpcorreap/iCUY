@@ -36,6 +36,7 @@ function App() {
         <Route path="/login">
           {user ? <Redirect to="/platform" /> : <Login />}
         </Route>
+        // El props que se envía a /habits pienso que debería ser dinámico, que dependa del usuario logueado actual. Juan Pablo Correa.
         <Route path="/habits">
           <Habit
             title="ToMeditate"
