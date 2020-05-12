@@ -2,7 +2,7 @@
     nav {
         z-index: 10;
         background-color: white;
-        position: absolute;
+        position: fixed;
         height: 70px;
         width: 100%;
         overflow: hidden;
@@ -34,6 +34,7 @@
         .intro-img {
             position: absolute;
             height: 70%;
+            right: 0;
         }
         .intro-text {
             text-align: center;
@@ -76,6 +77,7 @@
         .header {
             color: $secondary;
             height: 30px;
+            margin-bottom: 20px;
         }
         .description {
             color: $medium;

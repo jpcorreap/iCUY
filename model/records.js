@@ -6,44 +6,47 @@ class Record {
 
   constructor(record) {
 
-    /**
-             * Date of the record
-             */
+    // Date of the record
     this.date = record.date;
 
-    /**
-             * Habit Title
-             */
-    this.habit_Id = record.habitTitle;
+    //Habit Title
+    this.habitTitle = record.habitTitle;
 
-    /**
-             * User Email
-             */
-    this.user_Id = record.userEmail;
+    // User Email
+    this.userEmail = record.userEmail;
 
-    /**
-             * Value of the input
-             */
+    //Value of the input
     this.value = record.value;
 
-    /**
-             * For the Unique value, the database actually verifies if (date, userEmail, habitTitle) to be unique
-             */
+    //For the Unique value, the database actually verifies if (date, userEmail, habitTitle) to be unique
 
   }
 
   addNew() {
-
     //  Getting Database
     const db = getDb();
+    return fetchFilter(this.date, this.habitTitle, this.userEmail).then(res=>{
+      console.log(res,this);
+      if(res.length>0){
+        return db
+          .collection("records")
+          .updateOne({ _id: res[0]._id }, { $set: this }, { upsert: true })
+          .then()
+          .catch(err => {
+            return err;
+          });
+      }
+      else{
+        return db
+          .collection("records")
+          .insertOne(this)
+          .then()
+          .catch(err => {
+            return err;
+          });
+      }
+    });
     //  Returning response from habit creation
-    return db
-      .collection("records")
-      .insertOne(this)
-      .then()
-      .catch(err => {
-        return err;
-      });
 
   }
 

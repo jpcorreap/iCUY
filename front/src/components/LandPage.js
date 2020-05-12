@@ -21,9 +21,9 @@ function LandPage() {
                 <div className="cover"></div>
                 <div className="row h-100">
                     <div className="col-4">
-                        <img className="centrado intro-img" alt="Mascota iCUY" src={libreta}></img>
+                        <img className="centrado-v intro-img" alt="Mascota iCUY" src={libreta}></img>
                     </div>
-                    <div className="col-8">
+                    <div className="col-md-8 col-12">
                         <div className="intro-text centrado">
                             <h2 className="title">Transforma tu Vida</h2>
                             <p>Organiza y guia tu vida para ser la mejor version de ti mismo</p>
