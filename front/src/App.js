@@ -14,6 +14,7 @@ import Habit from "./components/Habit"
 
 function App() {
   const [user, setUser] = useState(null)
+  const [loading,setLoading] = useState(true)
 
   useEffect(() => {
     fetch("/auth/user")
@@ -21,17 +22,19 @@ function App() {
       .then(usr => {
         console.log(usr);
         setUser(usr);
+        setLoading(false);
       })
   }, [])
   
   return (
+    loading?'':
     <Router>
       <Switch>
-        <Route path="/login">
-          {user ? <Redirect to="/platform" /> : <Login />}
-        </Route>
         <Route path="/platform">
           {user ? <Base user={user} /> : <Redirect to="/login" />}
+        </Route>
+        <Route path="/login">
+          {user ? <Redirect to="/platform" /> : <Login />}
         </Route>
         <Route path="/habits">
           <Habit

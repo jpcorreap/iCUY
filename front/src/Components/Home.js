@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import {
     Switch,
     Route,
+    useLocation,
 } from "react-router-dom";
 import PropTypes from "prop-types";
 import DiaryCard from "./DiaryCard"
 function Home(props) {
+    props.location(useLocation().pathname)
     return (
         <div className="Home">
             <div className="row">
@@ -36,7 +38,8 @@ function Home(props) {
 Home.propTypes = {
     user: PropTypes.object.isRequired,
     habits: PropTypes.array.isRequired,
-    loading:PropTypes.bool.isRequired
+    loading:PropTypes.bool.isRequired,
+    location:PropTypes.func.isRequired
 }
 
 export default Home;

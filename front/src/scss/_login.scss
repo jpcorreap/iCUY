@@ -18,57 +18,56 @@
         position: absolute;
         top: 10%;
         right: 10%;
-    }
 
-    .box .link {
-        cursor: pointer;
-        color: $secondary;
-    }
+        .link {
+            cursor: pointer;
+            color: $secondary;
+        }
 
-    .box .title {
-        margin: 0 0 30px;
-        padding: 0;
-        color: $secondary;
-        font-size: 30px;
-        text-align: center;
-    }
+        .title {
+            margin: 0 0 30px;
+            padding: 0;
+            color: $secondary;
+            font-size: 30px;
+            text-align: center;
+        }
 
-    .box .inputBox {
-        position: relative;
-    }
+        .inputBox {
+            position: relative;
 
-    .box .inputBox input {
-        width: 100%;
-        padding: 10px 0;
-        font-size: 16px;
-        margin-bottom: 30px;
-        color: #ffffff;
-        border: none;
-        border-bottom: 1px solid #fff;
-        outline: none;
-        background: transparent;
-    }
+            input {
+                width: 100%;
+                padding: 10px 0;
+                font-size: 16px;
+                margin-bottom: 30px;
+                color: #ffffff;
+                border: none;
+                border-bottom: 1px solid #fff;
+                outline: none;
+                background: transparent;
+                &:focus ~ label,
+                &:valid ~ label {
+                    top: -20px;
+                    left: 0;
+                    color: $secondary;
+                    font-size: 12px;
+                }
+            }
 
-    .box .inputBox label {
-        position: absolute;
-        top: 0;
-        left: 0;
-        padding: 10px 0;
-        font-size: 16px;
-        color: #fff;
-        pointer-events: none;
-        transition: 0.5s;
+            label {
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 10px 0;
+                font-size: 16px;
+                color: #fff;
+                pointer-events: none;
+                transition: 0.5s;
+            }
+        }
     }
-
-    .box .inputBox input:focus ~ label,
-    .box .inputBox input:valid ~ label {
-        top: -20px;
-        left: 0;
-        color: $secondary;
-        font-size: 12px;
-    }
-
-    .submit, .google {
+    .submit,
+    .google {
         position: relative;
         padding: 10px 0;
         width: 100%;

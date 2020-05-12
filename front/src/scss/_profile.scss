@@ -1,4 +1,121 @@
-.Profile{
-    
-    padding: 90px 30px 20px;
+.Profile {
+    padding: 40px;
+    .profile-info {
+        padding: 20px;
+        margin-bottom: 40px;
+        .photo {
+            padding: 10px 20px;
+            width: 250px;
+            img {
+                height: 200px;
+                width: 200px;
+            }
+            .edit {
+                font-size: 17px;
+                margin-top: 25px;
+                svg {
+                    color: white;
+                }
+            }
+        }
+        .information {
+            padding: 20px 40px 0;
+            .name {
+                font-size: 30px;
+            }
+            .basic-info {
+                padding-left: 15px;
+                color: $tertiary;
+            }
+            .stats {
+                padding: 20px 0 0;
+                .stat {
+                    margin-right: 40px;
+                    .title {
+                        color: $medium;
+                    }
+                    .value {
+                        font-size: 40px;
+                        color: $tertiary-tint;
+                        margin: 0;
+                        font-weight: 900;
+                    }
+                }
+            }
+        }
+    }
+    .habits {
+        .card {
+            padding: 20px;
+            overflow: hidden;
+            min-height: 400px;
+            .header {
+                position: relative;
+                height: 40px;
+                .title {
+                    color: $tertiary;
+                    display: inline-block;
+                }
+                .add {
+                    background-color: transparent;
+                    border: 0;
+                    float: right;
+                    svg {
+                        color: $quaternary;
+                        height: 35px;
+                        width: 35px;
+                    }
+                }
+            }
+            .body {
+                .habits-list {
+                    margin-top: -1rem;
+                    width: 100%;
+                    .habit {
+                        padding: 1rem;
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                        cursor: pointer;
+                    }
+                }
+            }
+            .edit {
+                position: absolute;
+                height: 50%;
+                bottom: -100%;
+            }
+        }
+    }
+    .inputBox {
+        position: relative;
+
+        input {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 16px;
+            margin-bottom: 30px;
+            color: #ffffff;
+            border: none;
+            border-bottom: 1px solid #fff;
+            outline: none;
+            background: transparent;
+            &:focus ~ label,
+            &:valid ~ label {
+                top: -20px;
+                left: 0;
+                color: $secondary;
+                font-size: 12px;
+            }
+        }
+
+        label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #fff;
+            pointer-events: none;
+            transition: 0.5s;
+        }
+    }
 }

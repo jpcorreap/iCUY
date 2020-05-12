@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import {
     Switch,
     Route,
-    useLocation
+    useLocation,
+    Redirect,
+    Link
 } from "react-router-dom";
 import PropTypes from "prop-types";
 import Home from "./Home";
@@ -33,13 +35,13 @@ function Base(props) {
                         <div className="links centrado-v">
                             <ul className="navbar-nav">
                                 <li className="nav-item">
-                                    <a className={`nav-link ${location == "/platform" ? 'active' : ''}`} href="/platform">Inicio</a>
+                                    <Link className={`nav-link ${location == "/platform" ? 'active' : ''}`} to="/platform">Inicio</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className={`nav-link ${location == "/platform/profile"?'active':''}`} href="/platform/profile">Perfil</a>
+                                    <Link className={`nav-link ${location == "/platform/profile"?'active':''}`} to="/platform/profile">Perfil</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className={`nav-link ${location == "/platform/habits" ? 'active' : ''}`}  href="/platform/habits">Mis Habitos</a>
+                                    <Link className={`nav-link ${location == "/platform/habits" ? 'active' : ''}`}  to="/platform/habits">Mis Habitos</Link>
                                 </li>
                             </ul>
                         </div>
@@ -58,11 +60,14 @@ function Base(props) {
                         {/* <Route path="/profile/:id">
                     <Profile user={props.user} solicitudes={solicitudes}/>
                 </Route> */}
-                        <Route path="/profile">
-                            <Profile user={props.user} habits={habits} loading={loading}/>
+                        <Route path="/platform/profile">
+                            <Profile user={props.user} habits={habits} loading={loading} location={setLocation} />
                         </Route>
-                        <Route path="/">
-                            <Home user={props.user} habits={habits} />
+                        <Route path="/platform/*">
+                             <Redirect to="/platform" />
+                        </Route>
+                        <Route path="/platform">
+                            <Home user={props.user} habits={habits} loading={loading} location={setLocation}/>
                         </Route>
                     </Switch>
                 </>
