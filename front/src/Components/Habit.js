@@ -29,6 +29,7 @@ const Habit = (props) => {
                 return res.json()
             })
             .then(habits => {
+                console.log('habits',habits)
                 setHabit(habits[0])
             })
     }
@@ -50,25 +51,28 @@ const Habit = (props) => {
                 return res.json()
             })
             .then(records => {
-                setRecords(records.map(
-                    record => ({
-                        date: record.date,
-                        value: record.value
-                    })
-                ))
+                console.log('records',records)
+                let format =  records.map(record => {
+                        return {
+                            date: record.date,
+                            value: record.value
+                        }
+                    });
+            console.log(format);
+                setRecords(format)
             })
     }
 
     const renderSwitch = () => {
         switch (habit.inputType) {
             case 'boolean':
-                return records?<GraphBoolean data={records} />:""
+                return<GraphBoolean data={records} />
                 break;
             case 'number':
-                return records ? <GraphNumber data={records} /> : ""
+                return <GraphNumber data={records} /> 
                 break;
             case 'hour':
-                return records ? <GraphHour data={records} /> : ""
+                return <GraphHour data={records} />
                 break;
             default:
                 return ""
@@ -81,9 +85,8 @@ const Habit = (props) => {
             <div className="w-100 p-3 h-25 flex" style={{ background: 'green' }}>
                 {habit.title ? <h1 style={{ color: '#F2F2F2' }}>{habit.title}</h1> : ""}
             </div>
-            {console.log(records)}
             <div className="w-100 p-3 h-75 overflow-auto" style={{ maxWidth: '100%' }}>
-                {renderSwitch()}
+                {records?renderSwitch():""}
             </div>
         </div>
     )

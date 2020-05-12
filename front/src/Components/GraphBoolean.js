@@ -54,16 +54,26 @@ const GraphBoolean = (props) => {
         }
     )
 
-    const options = {
-        series : {
-            name: "Done",
-            data: records
-        }
-    }
+    const info = {
+        options: {
+            chart: {
+                id: "basic-bar"
+            },
+            xaxis: {
+                categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+            }
+        },
+        series: [
+            {
+                name: "Done",
+                data: records
+            }
+        ]
+    };
 
     return (
         <div className="w-100 h-75 position-absolute bottom-0 ">
-            <Chart options={options} type="heatmap" width={"80%"} height={"100%"} />
+            <Chart options = {info.options} series={info.series} type="heatmap" width={"80%"} height={"100%"} />
         </div>
     )
 
