@@ -11,7 +11,8 @@ import Profile from "./Profile";
 import logo from "../assets/icuymaslogo.png";
 import defaultPhoto from "../assets/user.png"
 function Base(props) {
-    const [location, setLocation] = useState(useLocation().pathname)
+    const [location, setLocation] = useState(useLocation().pathname);
+    const [loading, setLoading] = useState(true);
     const [habits, setHabits] = useState([]);
     useEffect(() => {
         fetch(`/habits/filter?userEmail=${props.user.email}`)
@@ -58,7 +59,7 @@ function Base(props) {
                     <Profile user={props.user} solicitudes={solicitudes}/>
                 </Route> */}
                         <Route path="/profile">
-                            <Profile user={props.user} habits={habits} />
+                            <Profile user={props.user} habits={habits} loading={loading}/>
                         </Route>
                         <Route path="/">
                             <Home user={props.user} habits={habits} />

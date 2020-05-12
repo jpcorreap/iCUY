@@ -6,7 +6,6 @@ import {
 import PropTypes from "prop-types";
 import DiaryCard from "./DiaryCard"
 function Home(props) {
-    const [loading, setLoading] = useState(true)
     return (
         <div className="Home">
             <div className="row">
@@ -14,7 +13,7 @@ function Home(props) {
                     <h1 className="titulo-seccion">Registro tus logros diarios</h1>
                     <div className="accordion" id="DiaryAreas">
                         {
-                            loading ?
+                            props.loading ?
                                 <div class="spinner-border text-warning centrado" role="status">
                                     <span class="sr-only">Loading...</span>
                                 </div>
@@ -36,7 +35,8 @@ function Home(props) {
 }
 Home.propTypes = {
     user: PropTypes.object.isRequired,
-    habits: PropTypes.array.isRequired
+    habits: PropTypes.array.isRequired,
+    loading:PropTypes.bool.isRequired
 }
 
 export default Home;
